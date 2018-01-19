@@ -1,0 +1,62 @@
+http:
+  port: 8080
+admin:
+  port: 9876
+  hostname: localhost
+apiEndpoints:
+  accounts:
+    host: '*'
+    paths: '/accounts/*'
+  authentication:
+    host: '*'
+    paths: '/authentication/*'
+  smp:
+    host: '*'
+    paths: '/smp/*'
+serviceEndpoints:
+  accountsStudents:
+    url: 'https://networkbase-accounts.appspot.com/'
+  authentication:
+    url: 'https://networkbase-authentication.appspot.com/'
+  smp:
+    url: 'https://networkbase-authentication.appspot.com/'
+policies:
+#  - basic-auth
+  - cors
+#  - expression
+#  - key-auth
+#  - log
+#  - oauth2
+  - proxy
+#  - rate-limit
+pipelines:
+  - name: accounts
+    apiEndpoints:
+      - accounts
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+    # - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: accountsStudents
+              changeOrigin: true
+  - name: authentication
+    apiEndpoints:
+      - authentication
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+    # - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: authentication
+              changeOrigin: true
+  - name: smp
+    apiEndpoints:
+      - smp
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+    # - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: smp
+              changeOrigin: true
