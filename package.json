@@ -4,6 +4,6 @@
   "main": "server.js",
   "scripts": {"start": "pm2 start server.js"},
   "dependencies": {
-    "express-gateway": "^1.3.0"
+    "express-gateway": "1.3.0"
   }
 }
