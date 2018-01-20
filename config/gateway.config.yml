@@ -16,6 +16,15 @@ apiEndpoints:
   emails:
     host: '*'
     paths: '/emails/*'
+  university:
+    host: '*'
+    paths: '/university/*'
+  upload:
+    host: '*'
+    paths: '/upload/*'
+  search:
+    host: '*'
+    paths: '/search/*'
 serviceEndpoints:
   accountsStudents:
     url: 'https://networkbase-accounts.appspot.com/'
@@ -25,9 +34,15 @@ serviceEndpoints:
     url: 'https://networkbase-authentication.appspot.com/'
   emails:
     url: 'https://networkbase-emails.appspot.com'
+  university:
+    url: 'https://networkbase-university.appspot.com'
+  upload:
+    url: 'https://networkbase-upload.appspot.com'
+  search:
+    url: 'https://networkbase-search.appspot.com'
 policies:
 #  - basic-auth
-  - cors
+#  - cors
 #  - expression
 #  - key-auth
 #  - log
@@ -74,4 +89,34 @@ pipelines:
       - proxy:
           - action:
               serviceEndpoint: emails
+              changeOrigin: true
+  - name: university
+    apiEndpoints:
+      - university
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+    # - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: university
+              changeOrigin: true
+  - name: upload
+    apiEndpoints:
+      - upload
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+    # - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: upload
+              changeOrigin: true
+  - name: search
+    apiEndpoints:
+      - search
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+    # - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: search
               changeOrigin: true
