@@ -13,6 +13,9 @@ apiEndpoints:
   smp:
     host: '*'
     paths: '/smp/*'
+  emails:
+    host: '*'
+    paths: '/emails/*'
 serviceEndpoints:
   accountsStudents:
     url: 'https://networkbase-accounts.appspot.com/'
@@ -20,6 +23,8 @@ serviceEndpoints:
     url: 'https://networkbase-authentication.appspot.com/'
   smp:
     url: 'https://networkbase-authentication.appspot.com/'
+  emails:
+    url: 'https://networkbase-emails.appspot.com'
 policies:
 #  - basic-auth
   - cors
@@ -59,4 +64,14 @@ pipelines:
       - proxy:
           - action:
               serviceEndpoint: smp
+              changeOrigin: true
+  - name: emails
+    apiEndpoints:
+      - emails
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+    # - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: emails
               changeOrigin: true
