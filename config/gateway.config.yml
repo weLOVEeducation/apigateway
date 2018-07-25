@@ -27,19 +27,19 @@ apiEndpoints:
     paths: '/search/*'
 serviceEndpoints:
   accountsStudents:
-    url: 'https://networkbase-accounts.appspot.com/'
+    url: 'https://network-accounts-prod.herokuapp.com/'
   authentication:
-    url: 'https://networkbase-authentication.appspot.com/'
+    url: 'https://network-authentication-prod.herokuapp.com/'
   smp:
-    url: 'https://networkbase-authentication.appspot.com/'
+    url: 'https://network-socialmarketplace-prod.herokuapp.com/'
   emails:
-    url: 'https://networkbase-emails.appspot.com'
+    url: 'https://network-emails-prod.herokuapp.com/'
   university:
-    url: 'https://networkbase-university.appspot.com'
+    url: 'https://network-university-prod.herokuapp.com/'
   upload:
-    url: 'https://networkbase-upload.appspot.com'
+    url: 'https://network-upload-prod.herokuapp.com/'
   search:
-    url: 'https://networkbase-search.appspot.com'
+    url: 'https://network-search-prod.herokuapp.com/'
 policies:
 #  - basic-auth
 #  - cors
